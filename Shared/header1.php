@@ -30,15 +30,25 @@
               <li><a href="../Users/viewblog1.php"> <font size="4">View My Blogs</a></li>
               </ul>
               </li>
-             
+              <li><a><font size="4">Patients</font></a>
+            <ul>
               <li><a href="../Visitors/patientlogsign.php"> <font size="4">Patient Add or Sign Up</a></li>
               
               <li><a href="../user_mst/patlogout.php"> <font size="4">Patient Log Out</a></li>
-
+              </ul>  
+              </li>
+            <li><a><font size="4">My Account</font></a>
+              <ul>
               <li><a href="../Doctor_mst/docprofile.php"> <font size="4">Profile</a></li>
               
               <li><a href="../user_mst/logout.php"> <font size="4">Log Out</a></li>
             </ul>
+              </li>
+             
+
+
+
+              </ul>
           </div>
         </div>
       </nav>
