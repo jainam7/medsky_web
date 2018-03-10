@@ -1,19 +1,7 @@
+
 <?php
      session_start();
 ?>
-<!DOCTYPE html>
-
-<html lang="en-US">
-  <head>
-  <?php
-  //  include '../Shared/Assets/links.php';
-  include '../Shared/link.php';
-    ?>
-  </head>  
-  
-  <body class="size-1140">
-  	<!-- HEADER -->
-    
       <?php
   if(empty($_SESSION["id"]))
   {
@@ -25,48 +13,24 @@
   }
 ?>
 
+<!DOCTYPE html>
 
-    <head>
-	
+<html lang="en-US">
+  <head>
+  <?php
+  //  include '../Shared/Assets/links.php';
+  include '../Shared/link.php';
+    ?>
 
-      <meta charset="utf-10">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-      
+    <link rel="stylesheet" href="style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="choosen.js"></script>
 
-         
-        
-       <!-- <link rel="stylesheet" href="../shared/assets1/bootstrap/css/bootstrap.min.css">
-         <link rel="stylesheet" href="../shared/assets1/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../shared/assets1/css/form-elements.css">
-        <link rel="stylesheet" href="../shared/assets1/css/style.css">-->
-
-        
-  
-
-
-        
-    
-  <!--  <link rel="stylesheet" href="../shared/css/components.css">
-    <link rel="stylesheet" href="../shared/css/icons.css">
-    <link rel="stylesheet" href="../shared/css/responsee.css">
-    <link rel="stylesheet" href="../shared/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="../shared/owl-carousel/owl.theme.css">
-     
-    <link rel="stylesheet" href="../shared/css/template-style.css">
-    
-    <script type="text/javascript" src="../shared/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="../shared/js/jquery-ui.min.js"></script>    
-    <script type="text/javascript" src="../shared/js/validation.js"></script> 
-  
-    <script type="text/javascript" src="../shared/js/responsee.js"></script>
-    <script type="text/javascript" src="../shared/owl-carousel/owl.carousel.js"></script>
-    <script type="text/javascript" src="../shared/js/template-scripts.js"></script>   -->
 
 
             
     
-<style>
+            <style>
 body
 {
     background-color:#002633 ;
@@ -87,9 +51,13 @@ button {
 
 </style>
 
-    </head>
-    <body>
-   
+
+
+  </head>  
+  
+  <body class="size-1140">
+  	<!-- HEADER -->
+    
 
 
 
@@ -109,11 +77,9 @@ $id=$_SESSION["id"];
     }
     
     require '../Shared/Classes/classdoc.php';
-    require '../Shared/Classes/classspeci.php';
-    require '../Shared/Classes/classdeg.php';
     ?>
     <?php
-      include '../Shared/link.php';
+    //  include '../Shared/link.php';
      // require '../shared/header.php';
        
     ?>
@@ -148,18 +114,9 @@ $gen=$row["doc_gen"];
  
  <div class="col-sm-4"></div>
  
-<div class="col-md-5">
- 
- <div class="form-box">
-     <div class="form-top">
-         <div class="form-top-left">
-             <font size="5"color="white">Profile...</font>
-             <p></p>
-         </div>
-         <div class="form-top-right">
+
+ <font size="5"color="white">Profile...</font>
          
-         </div>
-     </div>
      <div class="form-bottom" align="left">
          <form role="form" action="docprofile.php" method="post" class="registration-form">
          <table height="60%"width="100%">
@@ -200,14 +157,41 @@ $gen=$row["doc_gen"];
              <div class="form-group">
              <tr>
              <td><b><label class="sr-only" for="form-name">Specialist :-</label></td>
-             <td><input type="text" value=""size="100" placeholder="Specialist..." id="" name="spec"class="form-control" class="input-text "></td>
+             <td>
+             <select class="chosen" name="spec" style="width:500px;">
+                <?php
+                    require '../Shared/Classes/classspeci.php';
+                    $cn1=new spec_all();
+                    $res=$cn1->select_all();
+                    while($rw=$res->fetch_assoc())
+                    {
+echo '<option value="'.$rw["pk_spec_id"].'">'.$rw["spec_name"].'</option>';
+                    }
+
+                ?>
+                </select>
+             </td>
             </tr>
              </div>
             
              <div class="form-group">
             <tr>
              <td><b><label class="sr-only" for="form-name">Degree :-</label></td>
-             <td><input type="text" value=""size="100" placeholder="Degree..." id="" name="deg"class="form-control" class="input-text "></td>
+             <td>
+                <select name="deg" style="width:500px;" class="chosen">
+                <?php
+                require '../Shared/Classes/classdeg.php';
+                $cn2=new deg_all();
+                $res=$cn2->select_all();
+                while($rw=$res->fetch_assoc())
+                {
+                    echo '<option value="'.$rw["pk_deg_id"].'">'.$rw["deg_name"].'</option>';
+
+                }
+                 //   <input type="text" value=""size="100" placeholder="Degree..." id="" name="deg"class="form-control" class="input-text ">
+                ?>
+                </select>
+             </td>
              </tr>
         
              </div>
@@ -225,8 +209,8 @@ $gen=$row["doc_gen"];
              </div>
              <tr>
              <td>
-           <center><font size="12"><button type="submit"name="btn">Add Details</button></center>
-          <td>  <font size="12"><button type="submit"name="btn1">Change Password</button></td>
+           <center><font size="12"><button type="submit"name="btn">Add Details</button></center></td>
+          <td>  <font size="12"><button type="submit"name="btn1" >Change Password</button></td>
              </tr>
              </table>
             </form>
@@ -253,7 +237,9 @@ $gen=$row["doc_gen"];
     ?>
 
 </div>
-
+<script type="text/javascript">
+$(".chosen").chosen();
+</script>
 </body>
   </html>
    
