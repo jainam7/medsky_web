@@ -48,8 +48,12 @@ if(!(isset($_POST["sub1"])))
                     $mcnt=1;
                     echo '<tr><td>Sr.No</td><td>Medicine Name</td><td>Morning Dose</td><td>Noon Dose</td><td>Night Dose</td><td>Days</td><td>Instructions</td></tr>';
                     $mname="med".$mcnt;
-                    while(!($_POST["$mname"]=="NoMedicineSelected"))
+                  for($u=1;$u<=10;$u++)
+                   {
+                    if($_POST["$mname"]=="NoMedicineSelected")
                     {
+                      break;
+                    }
                     
                       
                       $iname="instr".$mcnt;
@@ -96,6 +100,7 @@ if(!(isset($_POST["sub1"])))
                     $mcnt++;
                     $mname="med".$mcnt;
                   }
+                
                   $mcnt--;
             ?>
                   <div class="margin">

@@ -75,7 +75,7 @@ include '../Shared/Assets/conditionforlogin.php';
 </div>
             <?php
                     $cnt=1;
-                    for($cnt=1;$cnt<=5;$cnt++)
+                    for($cnt=1;$cnt<=10;$cnt++)
                     {
 
                         echo '<div class="margin">'.

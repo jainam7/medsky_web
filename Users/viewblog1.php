@@ -47,7 +47,7 @@ if (empty($_SESSION["id"])) {
       <th scope="col">Blog Title</th>
       <th scope="col">Blog Description</th>
       <th scope="col">Blog Date</th>
-      <th scope="col">Total Likes</th>
+    <!--  <th scope="col">Total Likes</th>-->
     </tr>
   </thead>
   <tbody>
@@ -63,9 +63,10 @@ while($row=$result->fetch_assoc())
   <th scope="col">'.$row["blog_title"].'</a></th>
   <th scope="col">'.$row["blog_desc"].'</a></th>
   <th scope="col">'.$row["blog_date"].'</a></th>
-  <th scope="col">'.$row["COUNT(l.like_id)"].'</a></th>
+
   </tr>';
   $cnt++;
+  //  <th scope="col">'.$row["COUNT(l.like_id)"].'</a></th>
 }
 ?>
 </tbody>

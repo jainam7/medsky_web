@@ -86,7 +86,7 @@ button {
                                     $result=$cnn->selectbyid($enteredid);
                                     if($result->num_rows==1)
                                     {
-                                        $_SESSION["id"]=$enteredid;
+                                        $_SESSION["pid"]=$enteredid;
                                         header('location:emaildemousr.php');
                                     }
                                     else

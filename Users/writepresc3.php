@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 include '../Shared/Assets/conditionforlogin.php';
 ?>
 <!DOCTYPE html>
@@ -166,79 +168,61 @@ $medskybody=$medskybody.''.'</form>
 
 //Here is Ending of Body
 
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
-require_once "../Shared/Assets/phpmailer/class.phpmailer.php";
-
-//$message="hello";
-$message=$medskybody;
-// creating the phpmailer object
-$mail = new PHPMailer(true);
-
-// telling the class to use SMTP
-$mail->IsSMTP();
-
-// enables SMTP debug information (for testing) set 0 turn off debugging mode, 1 to show debug result
-$mail->SMTPDebug = 0;
-
-// enable SMTP authentication
-$mail->SMTPAuth = true;
-
-// sets the prefix to the server
-$mail->SMTPSecure = 'ssl';
-
-// sets GMAIL as the SMTP server
-$mail->Host = 'smtp.gmail.com';
-
-// set the SMTP port for the GMAIL server
-$mail->Port = 587;
-
-// your gmail address
-$mail->Username = 'medskyy@gmail.com';
-
-// your password must be enclosed in single quotes
-$mail->Password = 'nopassword1234';
-
-// add a subject line
-$mail->Subject = 'Your Prescription';
-
-// Sender email address and name
-$mail->SetFrom('medsky@gmail.com', 'info.medsky');
-
-$email1=$_SESSION["pid"]; 
-// reciever address, person you want to send
-$mail->AddAddress($email1);
-
-// if your send to multiple person add this line again
-//$mail->AddAddress('tosend@domain.com');
-
-// if you want to send a carbon copy
-//$mail->AddCC('tosend@domain.com');
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+require '../Shared/MailAssets/vendor/autoload.php';
 
 
-// if you want to send a blind carbon copy
-//$mail->AddBCC('tosend@domain.com');
-
-// add message body
-$mail->MsgHTML($message);
-
-
-// add attachment if any
-//$mail->AddAttachment('time.png');
-
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
-    // send mail
-	
-	//don't forget to enable openssl true from php_extensions
-    $mail->Send();
-    $msg = "We had send one copy of Prescription to patient`s registered email id.He/She can checkout there.";
-} catch (phpmailerException $e) {
-    $msg = $e->getMessage();
-} catch (Exception $e) {
-    $msg = $e->getMessage();
-}
-echo $msg;
+    //Server settings
+    //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'medskyy@gmail.com';                 // SMTP username
+    $mail->Password = 'nopassword1234';                           // SMTP password
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465;                                    // TCP port to connect to
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+    //Recipients
+    $mail->setFrom('medskyy@gmail.com', 'Medsky.com');
+    $email1=$_SESSION["pid"]; 
+    $mail->addAddress($email1, 'Respected Sir/Medam');     // Add a recipient
+    //$mail->addAddress('ellen@example.com');               // Name is optional
+    $mail->addReplyTo('medskyy@gmail.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
 
-//Here Ends Mailing
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Your Prescription';
+    $mail->Body    = $medskybody;
+   // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    $msg = "We had send one copy of Prescription to patient`s registered email id.He/She can checkout there.";
+    echo $msg;
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+
+
+
+
+
+
 
                      echo '<h1><ul><li>Precription Inserted Successfully.</li><li>User can also view this precription to Our app "Medsky".</li></ul></h1>';
                    }

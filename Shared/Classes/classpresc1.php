@@ -100,6 +100,25 @@ class pre
         pre::disconnect();
         
     }
+    public function getallmedicinetype()
+    {
+        $conn=pre::connect();
+        $q="select * from medicine_type";
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();
+        
+    }
+    public function insertmedicine($mname,$cname,$muse,$mtype)
+    {
+        $conn=pre::connect();
+        $q='insert into medicine_mst values("'.null.'","'.$mname.'","'.$cname.'","'.$muse.'","'.$mtype.'")';
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();
+        
+    }
+    
     public function viewmypatient($uid)
     {
         $conn=pre::connect();

@@ -43,12 +43,12 @@ if (empty($_SESSION["id"])) {
             <form class="customform"  enctype="multipart/form-data" action="writeblog2.php" method="post">
             <div class="form-group">
                <tr><td><lable style="font-size: 20px;">Blog Title:</lable></td>
-               <td><input type="text" class="form-control" placeholder="Enter Blog Title Here" name="btitle">
+               <td><input type="text" class="form-control" placeholder="Enter Blog Title Here" name="btitle" required>
                </td></tr>
                </div>
                <div class="form-group">
                    <tr><td><label style="font-size: 20px;">Blog Description:</label></td>
-                   <td><textarea name="editor1" class="form-control"></textarea></td></tr>
+                   <td><textarea name="editor1" class="form-control" required></textarea></td></tr>
                 </div>
                 <div class="form-group">
                    <tr><td></td><td><input style="font-size: 20px;" class="submit-form button background-primary border-radius text-white" type="submit" name="sub" value="Post"></td></tr>

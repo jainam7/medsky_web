@@ -1,6 +1,8 @@
 <?php
 class doc_all
 {
+    
+    
     private static $conn=null;
     public static function  connect()
     {
@@ -27,6 +29,14 @@ class doc_all
         $result=$cnn->query($q);
         return $result;
         doc_all::disconnect();
+    }
+    public function updatedetails($did,$pass,$lic,$dname,$add,$gen,$mob,$spec,$deg)
+    {
+       $cnn=doc_all::connect();
+        $q="update doctor_mst set doc_pass='". $pass ."' ,doc_lic_no='".$lic."',doc_name='".$dname."',doc_add='".$add."',doc_gen='".$gen."',doc_mno='".$mob."',fk_spec_id='".$spec."',fk_deg_id='".$deg."' where pk_doc_email_id='". $did ."'";
+         $result=$cnn->query($q);
+       return $result;
+        doc_all::disconnect();  
     }
     public function isverified($id,$token)
     {
@@ -55,86 +65,57 @@ class doc_all
         doc_all::disconnect();  
     }
  
+    
     public function verify($id,$name,$token)
     {
-                     error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
-         require_once "../Shared/phpmailer/class.phpmailer.php";
+       
+        require_once "../MailAssets/vendor/autoload.php";
 
-         $rmail=$id;
-         
-         $link='<h3>Respected Sir,'.$name.'</h1><a href="localhost/Medsky1.1/doctor_mst/docverify.php?token='.$token.'&eid='.$rmail.'&name='.$name.'"><h1>Please Click here to Verify your account!!!</h1></a>';
-         $message=$link;
-         // creating the phpmailer object
-         $mail = new PHPMailer(true);
-
-         // telling the class to use SMTP
-         $mail->IsSMTP();
-
-         // enables SMTP debug information (for testing) set 0 turn off debugging mode, 1 to show debug result
-         $mail->SMTPDebug = 0;
-
-         // enable SMTP authentication
-         $mail->SMTPAuth = true;
-
-         // sets the prefix to the server
-         $mail->SMTPSecure = 'ssl';
-
-         // sets GMAIL as the SMTP server
-         $mail->Host = 'smtp.gmail.com';
-
-         // set the SMTP port for the GMAIL server
-         $mail->Port = 465;
-
-         // your gmail address
-         $mail->Username = 'medskyy@gmail.com';
-
-         // your password must be enclosed in single quotes
-         $mail->Password = 'nopassword1234';
-
-         // add a subject line
-         $mail->Subject = 'Verification Mail';
-
-         // Sender email address and name
-         $mail->SetFrom('medsky@gmail.com', 'info.medsky');
-
-         $email1=$rmail;
-         // reciever address, person you want to send
-         $mail->AddAddress($email1);
-
-         // if your send to multiple person add this line again
-         //$mail->AddAddress('tosend@domain.com');
-
-         // if you want to send a carbon copy
-         //$mail->AddCC('tosend@domain.com');
-
-
-         // if you want to send a blind carbon copy
-         //$mail->AddBCC('tosend@domain.com');
-
-         // add message body
-         $mail->MsgHTML($message);
-
-
-         // add attachment if any
-         //$mail->AddAttachment('time.png');
-
-         try {
-         // send mail
-
-         //don't forget to enable openssl true from php_extensions
-         $mail->Send();
-     	$msg = "We had send you Verification Email so please first verify it ...";
-
-
-         } catch (phpmailerException $e) {
-         $msg = $e->getMessage();
-         } catch (Exception $e) {
-         $msg = $e->getMessage();
-         }
-         echo $msg;
-
-
-    }
+        $rmail=$id;
+        
+        $link='<h3>Respected Sir/Medam,<p><b>Greeting from Medsky.com!!!</b> Congratulations!! You had signed up successfuly.Kindly Verify Your account.'.$name.'</h1><a href="localhost/Medsky1.1/user_mst/usrverify.php?token='.$token.'&id='.$rmail.'&name='.$name.'"><h1>Please Click here to Verify your account!!!</h1></a></p>';
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+        try {
+            //Server settings
+            //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'medskyy@gmail.com';                 // SMTP username
+            $mail->Password = 'nopassword1234';                           // SMTP password
+            $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 465;                                    // TCP port to connect to
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            //Recipients
+            $mail->setFrom('medskyy@gmail.com', 'Scala from Medsky.com');
+            $mail->addAddress( $rmail, 'Verify Your Account');     // Add a recipient
+            //$mail->addAddress('ellen@example.com');               // Name is optional
+            $mail->addReplyTo('medskyy@gmail.com', 'Information');
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');
+        
+            //Attachments
+            //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Account Verification Mail';
+            $mail->Body    = $link;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        
+            $mail->send();
+            echo 'Verification Mail has been sent';
+        } catch (Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        }
+   }
 
     public function insert($did,$pass,$lno,$name,$spec,$deg,$img,$add,$gen,$mno,$token)
     {

@@ -11,7 +11,7 @@ if(!(empty($_SESSION["name"])))
 <html lang="en">
 	<head>
   <?php
-    include '../Shared/links.php';
+    include '../Shared/link.php';
     ?>
   
 	</head>
@@ -19,9 +19,7 @@ if(!(empty($_SESSION["name"])))
     <body>
 
    
-    //require '../Shared/Classes/classpro.php';
- /*   $conn=new product_all;
-    $result=$conn->select_all();*/
+   
 
                     <?php
                         $token=$_GET["token"];

@@ -97,6 +97,10 @@ for($i=0;$i<count($medicinenamearray);$i++)
   $cnt++;
 }
 ?>
+<tr><th colspan="7"></th></tr>
+<tr><th colspan="7"></th></tr>
+<tr><th colspan="7" align="right">Authrised Signatory</th></tr>
+<tr><th colspan="4"><center><button onclick="window.print()" class="submit-form button background-primary border-radius text-white">Print Prescription</button></center></th></tr>
 </tbody>
 </table>
       

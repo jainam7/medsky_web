@@ -32,7 +32,16 @@ class blogs
     public function getblogsofdoctor($did)
     {
         $cnn=blogs::connect();
-        $q="select b.*,COUNT(l.like_id) from blog_tbl b,likes_tbl l where b.blog_id=l.blog_id and b.fk_doc_email_id='".$did."'";
+        //$q="select b.*,COUNT(l.like_id) from blog_tbl b,likes_tbl l where b.blog_id=l.fk_blog_id and b.fk_doc_email_id='".$did."'";
+        $q="select * from blog_tbl where fk_doc_email_id='".$did."'";
+        $result=$cnn->query($q);
+        return $result;
+        blogs::disconnect();
+    }
+    public function getallblogs()
+    {
+        $cnn=blogs::connect();
+        $q="select * from blog_tbl";
         $result=$cnn->query($q);
         return $result;
         blogs::disconnect();

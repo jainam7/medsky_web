@@ -67,52 +67,7 @@ if (empty($_SESSION["id"])) {
         </div>
       </section>
       
-    
-
-    <!--
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner"></div>
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../Shared/img/MainImgs/MedicalImg1.jpg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Write Online Precription</h5>
-        <p>By this Site you can write Precription to any Patient.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../Shared/img/MainImgs/MedicalImg2.jpg" alt="Second slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>View Prescription Online with One Tap</h5>
-        <p>Out Android/Ios App for Viewing Precription online</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../Shared/img/MainImgs/MedicalImg3.jpg" alt="Third slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Paperless Process</h5>
-        <p>All medical information are online on digital platform.So it becomes easy and paperless in terms of Availability and Accessbility.</p>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
--->
-
-<br><br><br><br><br>
+      <br><br><br><br><br>
 
 <section class="section background-white">
         <div class="full-width text-center">
@@ -137,110 +92,112 @@ if (empty($_SESSION["id"])) {
             </p>
           </div>
         </div>  
-      </section>
-      <section class="section background-white">
+      </section>    
+
+  
+  
+
+<br><br><br><br><br>
+
+
+
+
+
+<?php
+    include '../Shared/Classes/classblog.php';
+    $conn=new blogs;
+    $result=$conn->getallblogs();
+
+?>
+<section class="section background-white">
         <div class="line">
           <h2 class="text-thin headline text-center text-s-size-30 margin-bottom-50">From Our <span class="text-primary">Blog</span></h2>
           <div class="carousel-default owl-carousel carousel-wide-arrows">
-            <div class="item">
-              <div class="margin"> 
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius margin-m-bottom">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-05.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8 margin-m-bottom">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-03.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div> 
-              </div>
-            </div>
-            <div class="item"> 
-              <div class="margin"> 
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius margin-m-bottom">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-04.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8 margin-m-bottom">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-02.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div> 
-              </div>
-            </div>
-            <div class="item">
-              <div class="margin"> 
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius margin-m-bottom">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-01.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8 margin-m-bottom">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-                <div class="s-12 m-12 l-6">
-                  <div class="image-border-radius">
-                    <div class="margin">
-                      <div class="s-12 m-12 l-4 margin-m-bottom">
-                        <a class="image-hover-zoom" href="/"><img src="img/blog-06.jpg" alt=""></a>
-                      </div>
-                      <div class="s-12 m-12 l-8">
-                        <h3><a class="text-dark text-primary-hover" href="/">Lorem Ipsum Dolor sit Amet</a></h3>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
-                        <a class="text-more-info text-primary-hover" href="/">Read more</a>
-                      </div>
-                    </div>  
-                  </div>
-                </div> 
-              </div>
-            </div>
+            <?php
+            $slides='';
+            $indicators='';
+            $counter=1;
+            $g=1;
+            $c=0;
+            while($row=$result->fetch_assoc())
+            {
+                $c++;
+                $blogtitle=$row["blog_title"];;
+                $blogdesc=$row["blog_desc"];
+                    if($c%2!=0)
+                    {
+echo '<div class="item">
+        <div class="margin"> ';
+                
+                
+               echo'<div class="s-12 m-12 l-6">
+						<div class="image-border-radius margin-m-bottom">
+							<div class="margin">
+								<div class="s-12 m-12 l-4 margin-m-bottom">
+                                          <a class="image-hover-zoom" href="/"><img src="img/blog-05.jpg" alt=""></a>
+								</div>
+								<div class="s-12 m-12 l-8 margin-m-bottom">
+									<h3><a class="text-dark text-primary-hover" href="/">'.$blogtitle.'</a></h3>
+									<p>'.$blogdesc.'</p>
+									
+								</div>
+							</div>  
+						</div>
+					</div>';
+                continue;
+                    }
+                    else
+                    {               
+					echo'<div class="s-12 m-12 l-6">
+							<div class="image-border-radius">
+								<div class="margin">
+									<div class="s-12 m-12 l-4 margin-m-bottom">
+										<a class="image-hover-zoom" href="/"><img src="img/blog-03.jpg" alt=""></a>
+									</div>
+									<div class="s-12 m-12 l-8">
+										<h3><a class="text-dark text-primary-hover" href="/">'.$blogtitle.'</a></h3>
+										<p>'.$blogdesc.'</p>
+									
+									</div>
+								</div>  
+							</div>
+						</div> 
+             
+		</div>
+	</div>';
+                    }
+			}
+
+                    
+                    ?>
+   
           </div>
         </div>    
-      </section>
+     </section>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

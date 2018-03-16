@@ -95,20 +95,35 @@ $lno=$row["doc_lic_no"];
 $name=$row["doc_name"];
 $mob=$row["doc_mno"];
 $gen=$row["doc_gen"];
+$add=$row["doc_add"];
+$specialist=$row["fk_spec_id"];
+$degree=$row["fk_deg_id"];
+$pass=$row["doc_pass"];
 
 ?>
-<!--?php
-    $conn=new spec_all;
-    $result=$conn->insert($na);
-    $row=$result->fetch_assoc();
-    $na=$_POST["spec"];
-    
-    
-?>-->
+
 <?php
     if(isset($_POST["btn1"]))
     {
-        echo '<form action="a.php"method="post"> </form>';
+      $dname=$_POST["nm"];
+      $pass=$_POST["pass"];
+      $uid=$_SESSION["id"];
+      $lic=$_POST["lno"];
+      $mob=$_POST["mno"];
+      $gen1=$_POST["gen"];
+      $spec=$_POST["spec"];
+      $deg=$_POST["deg"];
+      $add=$_POST["add"];
+      $cnc=new doc_all();
+      $res=$cnc->updatedetails($uid,$pass,$lic,$dname,$add,$gen1,$mob,$spec,$deg);
+      if($res===true)
+      {
+        header("Refresh:0");
+      }
+      else
+      {
+          echo 'Can`t Updated Details Successfully';
+      }
     }
 ?>
  
@@ -123,8 +138,14 @@ $gen=$row["doc_gen"];
              <div>
                 <tr>
                 <td><font size=""><b> <label class="sr-only" for="form-email">Name :- </label></td>
-                 <td><input type="text" name="nm" size="100"cols="5" value="<?php echo $name; ?>"readonly>&nbsp;
+                 <td><input type="text" name="nm" size="100"cols="5" value="<?php echo $name; ?>">&nbsp;
                  &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                 </tr>
+             </div>
+             <div class="form-group">
+                <tr>            
+                 <td><b><label class="sr-only" for="form-password">Password :-</label></td>
+                 <td><input type="text" name="pass" size="100" value="<?php echo $pass; ?>" class="form-passwd form-control" ></td>
                  </tr>
              </div>
             <div class="form-group">
@@ -136,20 +157,24 @@ $gen=$row["doc_gen"];
              <div class="form-group">
                 <tr>
                  <td><b><label class="sr-only" for="form-doclic-no">Licence No :-</label></td>
-                 <td><input type="text" name="lno" size="100" value="<?php echo $lno; ?>"placeholder="Licence no..." class="form-lno form-control" id="form-email"readonly></td>
+                 <td><input type="text" name="lno" size="100" value="<?php echo $lno; ?>"placeholder="Licence no..." class="form-lno form-control" id="form-email"></td>
                  </tr>
              </div>
 
              <div class="form-group">
              <tr>
                  <td><b><label class="sr-only" for="form-name">Mobile No :-</label></td>
-                 <td><input type="text" name="mno"size="100" value="<?php echo $mob; ?>" placeholder="Name..." class="form-name form-control" id="form-name"readonly></td>
+                 <td><input type="text" name="mno" size="100" value="<?php echo $mob; ?>" placeholder="Name..." class="form-name form-control" id="form-name"></td>
                  </tr>
              </div>
              <div class="form-group">
              <tr>
              <td><b><label class="sr-only" for="form-name">Gender :-</label></td>
-             <td><input type="text" value="<?php echo $gen; ?>"size="100" placeholder="" id="" name="gen"class="form-control" class="input-text " readonly></center></td>
+             <td>
+                <input type="radio" value="Male" size="100"  name="gen" class="form-control" class="input-text " <?php if($gen=="Male" || $gen=="male"){echo "checked";} ?>>Male
+                <input type="radio" value="Female" size="100"  name="gen" class="form-control" class="input-text " <?php if($gen=="Female" || $gen=="female"){echo "checked";} ?> >Female
+             </center></td>
+             <!--<td><input type="text" value="<?php echo $gen; ?>"size="100" placeholder="" id="" name="gen"class="form-control" class="input-text " ></center></td>-->
              </tr>
         
              </div>
@@ -165,7 +190,14 @@ $gen=$row["doc_gen"];
                     $res=$cn1->select_all();
                     while($rw=$res->fetch_assoc())
                     {
-echo '<option value="'.$rw["pk_spec_id"].'">'.$rw["spec_name"].'</option>';
+                        if($rw["pk_spec_id"]==$specialist)
+                        {
+                            echo '<option value="'.$rw["pk_spec_id"].'" selected>'.$rw["spec_name"].'</option>';
+                        }
+                        else
+                        {
+                            echo '<option value="'.$rw["pk_spec_id"].'" >'.$rw["spec_name"].'</option>';
+                        }
                     }
 
                 ?>
@@ -185,7 +217,14 @@ echo '<option value="'.$rw["pk_spec_id"].'">'.$rw["spec_name"].'</option>';
                 $res=$cn2->select_all();
                 while($rw=$res->fetch_assoc())
                 {
-                    echo '<option value="'.$rw["pk_deg_id"].'">'.$rw["deg_name"].'</option>';
+                    if($rw["pk_deg_id"]==$degree)
+                    {
+                        echo '<option value="'.$rw["pk_deg_id"].'" selected>'.$rw["deg_name"].'</option>';    
+                    }
+                    else
+                    {
+                    echo '<option value="'.$rw["pk_deg_id"].'" >'.$rw["deg_name"].'</option>';
+                    }
 
                 }
                  //   <input type="text" value=""size="100" placeholder="Degree..." id="" name="deg"class="form-control" class="input-text ">
@@ -203,14 +242,15 @@ echo '<option value="'.$rw["pk_spec_id"].'">'.$rw["spec_name"].'</option>';
              <div class="form-group">
              <tr>
             <td><b><label class="sr-only" for="form-name">Address :-</label></td>
-            <td><textarea rows="5" cols="50"size="100"placeholder="Address..."></textarea></td>
+            <td><textarea rows="5" name="add" cols="50"size="100" placeholder="Address..."><?php
+                echo $add;
+            ?></textarea></td>
             </tr>
         
              </div>
              <tr>
-             <td>
-           <center><font size="12"><button type="submit"name="btn">Add Details</button></center></td>
-          <td>  <font size="12"><button type="submit"name="btn1" >Change Password</button></td>
+             
+          <td>  <font size="12"><button type="submit" name="btn1" >Update Details</button></td>
              </tr>
              </table>
             </form>
