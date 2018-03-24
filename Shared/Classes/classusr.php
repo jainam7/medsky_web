@@ -109,12 +109,12 @@ class usr_all
          }
 
     }
-  public function insert($id,$name,$mno,$pass,$gen,$img,$token,$type)
+  public function insert($id,$name,$mno,$pass,$gen,$img,$bgrp,$bdate,$token,$type)
        {
            $cnn=usr_all::connect();
            $vari=0;      
            //$usertype="User";
-           $q="insert into user_mst values ('". null ."','". $id ."','". $name ."','". $mno ."','". $pass ."','". $gen ."','". $img ."','". $vari ."','". $token ."','".$type."')";
+           $q="insert into user_mst values ('". null ."','". $id ."','". $name ."','". $mno ."','". $pass ."','". $gen ."','". $img ."','". $bgrp ."','". $bdate ."','". $vari ."','". $token ."','".$type."')";
          //  echo $q;        
            $result=$cnn->query($q);
            return $result;

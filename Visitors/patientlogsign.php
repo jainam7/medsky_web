@@ -11,6 +11,20 @@
 	}
 ?>
 <head>
+<style type="text/css">
+    select {
+        width: 100%;
+		border-radius:5px;
+        margin: 10px 15px 0px 0px;
+		height: 50px;
+		align:right;
+    }
+    select:focus {
+        min-width: 100%;
+        width: auto;
+    }    
+	
+</style>
 
 	<?php
 	include '../Shared/styleofpatlog.php';
@@ -93,6 +107,8 @@ else
    $pas=$_POST["pass"];
    $gend=$_POST["gen"];
    $img="null";
+   $bgrp=$_POST["bgrp"];
+   $dat=$_POST["date"];
    $r=md5(rand());
    $token=substr($r,0,10);
    $type="user";
@@ -102,7 +118,7 @@ require '../Shared/Classes/classusr.php';
 /*$_SESSION["pid"]=$id;
 $_SESSION["pname"]=$na;*/
 $conn=new usr_all;
-$result=$conn->insert($id,$na,$mob,$pas,$gend,$img,$token,$type);
+$result=$conn->insert($id,$na,$mob,$pas,$gend,$img,$bgrp,$dat,$token,$type);
 if($result===true)
 {
    echo "<h1>We had sent you verification mail.Kindly check your email and verify your account to proceed further.</h1>";
@@ -166,6 +182,30 @@ else
 }
 }
 ?>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+
+
+
+<script src="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+ 
+<style type="text/css">
+/**
+ * Override feedback icon position
+ * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+ */
+#dateRangeForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
+
 </head>
 <div class="top-content">
 	<div class="container">
@@ -189,11 +229,11 @@ else
 				<form role="form" enctype="multipart/form-data" action="patientlogsign.php" method="post" class="login-form">
 				    <div class="form-group">
 						<label class="sr-only" for="form-username">Email id</label>
-				        <input type="email" name="id" placeholder="Email id..." class="form-username form-control" id="form-username" required>
+				        <input type="text" name="id" placeholder="Email id..." class="form-username form-control" id="form-username" required>
 				    </div>
 				    <div class="form-group">
 				        <label class="sr-only" for="form-password">Password</label>
-				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-password form-control" id="form-password" required>
+				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-password form-control" id="form-password" data-toggle="password" required>
 					</div>
 						<button type="submit"name="tab">Sign in!!</button> </br>  
 						<span class="pull-right"><a href="../user_mst/forget.php">Forgot Password ??</a></span>
@@ -215,11 +255,11 @@ else
 				<form role="form" onsubmit="return validate_form();"action="patientlogsign.php" method="post" class="registration-form"name="psign">
 				    <div class="form-group">
 				        <label class="sr-only" for="form-email">Email id</label>
-				        <input type="email" name="id" placeholder="Email id" class="form-email form-control" required >
+				        <input type="text" name="id" placeholder="Email id" class="form-email form-control" required >
 				    </div>
 				    <div class="form-group">
 				        <label class="sr-only" for="form-password">Password</label>
-				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-passwd form-control" id="passw" required>
+				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-passwd form-control" id="passw" data-toggle="password" required>
 				    </div>
                     <div class="form-group">
 				        <label class="sr-only" for="form-name">Name</label>
@@ -232,10 +272,40 @@ else
 						<input type="radio" name="gen" value="Female" class="form-name" id="form-gen">Female
 					</center>
 				    </div>
-					<div class="form-group">
+					<!--<div class="form-group">
 				        <label class="sr-only" for="form-mobile-no">Mobile No</label>
-				        <input type="number" pattern="/(7|8|9)\d{9}/" name="mno" placeholder="Mobile no..." class="form-mno form-control" id="form-email" required>
-				    </div>
+				        <input type="text" pattern="/(7|8|9)\d{10}/" name="mno" placeholder="Mobile no..." class="form-mno form-control" id="form-email" required>
+				    </div>-->
+					<div class="form-group">
+				                        	<label class="sr-only" for="form-mobile-no">Mobile No</label>
+				                        	<input type="text" name="mno" onkeypress="" pattern="[789][0-9]{9}" title="Alphabets are not allowed.Starting with 7,8,9,only" placeholder="Mobile no..." class="form-mno form-control" id="form-email">
+				                        </div>
+
+					<div class="form-group">
+				                        	<label class="sr-only" for="form-mobile-no" w>Blood Group </label>
+											
+											<select placeholder="Blood Group" name="bgrp" >
+											<option value=""disabled selected>Select your Blood Group</option>
+ 								 <option value="O+">O+</option>
+  								 <option value="O-">O-</option>
+                                 <option value="A+">A+</option>
+                                 <option value="A-">A-</option>
+								 <option value="B+">B+</option>
+								 <option value="B-">B-</option>
+								 <option value="AB+">AB+</option>
+								 <option value="AB-">AB-</option>
+                                </select>	 
+				                </div>
+
+
+<div class="form-group">
+
+  <input id="datepicker" width="400" class="form-mno form-control" placeholder="Enter Your Birthdate" height="50px" name="date" />
+
+</div>
+							
+</div>
+				
 					<div class="form-group">
 					<button type="submit"name="btn" >Sign me up!</button>
 					</div>
@@ -244,6 +314,13 @@ else
 		</div>
 	</div>			
 </div>
+<script>
+$(document).ready(function () {
+    $('#datepicker').datepicker({
+      uiLibrary: 'bootstrap'
+    });
+});
+</script>
 </body>
 </html>
 			
