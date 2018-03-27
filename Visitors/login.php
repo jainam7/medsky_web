@@ -38,7 +38,7 @@ if($result->num_rows===1)
 	$_SESSION["id"]=$id;
 	$_SESSION["name"]=$row["doc_name"];
 		
-	header('location:../visitors/index.php');
+	header('location:../Visitors/index.php');
 	}
 	else
 	{

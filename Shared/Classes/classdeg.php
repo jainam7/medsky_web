@@ -4,7 +4,7 @@ class deg_all
     private static $conn=null;
     public static function  connect()
     {
-        self::$conn=mysqli_connect("localhost","root","","medsky");
+        self::$conn=mysqli_connect("sql12.freemysqlhosting.net","sql12228778","dSUWZ6DakP","sql12228778");
         return self::$conn;
     }
     public static function disconnect()

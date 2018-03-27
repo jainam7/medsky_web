@@ -7,7 +7,7 @@
         <table><tr>
         <td><div class="line">
           <div class="s-12 l-2">
-            <a href="../visitors/index.php" class="logo"><!--<img src="../Shared/img/logo-free.png" alt="">-->
+            <a href="../Visitors/index.php" class="logo"><!--<img src="../Shared/img/logo-free.png" alt="">-->
             <font style="color:#00D27F;font-size:4em ">Medsky</font></a>
           </div>
           <td><div class="top-nav s-12 l-10">

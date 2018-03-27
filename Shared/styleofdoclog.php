@@ -8,10 +8,10 @@
 
          
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="../shared/assets1/bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="../shared/assets1/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../shared/assets1/css/form-elements.css">
-        <link rel="stylesheet" href="../shared/assets1/css/style.css">
+        <link rel="stylesheet" href="../Shared/assets1/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../Shared/assets1/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../Shared/assets1/css/form-elements.css">
+        <link rel="stylesheet" href="../Shared/assets1/css/style.css">
 
             
     
