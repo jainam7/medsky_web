@@ -75,7 +75,7 @@ for($i=0;$i<count($medidsarray)-1;$i++)
       <th scope="col">Instruction</th>
       <th scope="col">Morning Dosage</th>
       <th scope="col">Noon Dosage</th>
-      <th scope="col">Night Array</th>
+      <th scope="col">Night Dosage</th>
       <th scope="col">Days Required</th>
     </tr>
   </thead>

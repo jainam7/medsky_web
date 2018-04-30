@@ -49,7 +49,7 @@ if($result->num_rows===1)
 
    $rmail=$id;
    
-   $link='<h3>Respected Sir/Medam,<p><b>Greeting from Medsky.com!!!</b> Congratulations!! You had signed up successfuly.Kindly Verify Your account.'.$name.'</h1><a href="localhost/MD/Medsky1.1/Doctor_mst/docverify.php?token='.$token.'&eid='.$rmail.'&name='.$name.'"><h1>Please Click here to Verify your account!!!</h1></a></p>';
+   $link='<h3>Respected Sir/Medam,<p><b>Greeting from Medsky.com!!!</b> Congratulations!! You had signed up successfuly.Kindly Verify Your account.'.$name.'</h1><a href="localhost/Medsky1.1/Doctor_mst/docverify.php?token='.$token.'&eid='.$rmail.'&name='.$name.'"><h1>Please Click here to Verify your account!!!</h1></a></p>';
    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
    try {
 	   //Server settings
@@ -103,7 +103,7 @@ echo '<h1><p class="reset"><a tabindex="4" href="../doctor_mst/verifyrepeat.php?
 		
 		
   echo '<script language="javascript">';
-  echo 'alery(Enter Appropriate Password)'; 
+  echo 'alert(Enter Appropriate Password)'; 
   echo '</script>';
   
 echo '<div class="btn btn-dark btn-lg btn-block">Enter Appropriate Username and PassWord </div>';

@@ -17,13 +17,13 @@
 
             
               <li><a href="../Visitors/index.php"> <font size="4">Home</font></a></li>
-              <li><a><font size="4">Prescriptions & Patients</font></a>
+              <li><a><font size="4">Prescriptions Management</font></a>
               <ul>
-              <li><a href="../Users/insertmedicine1.php"> <font size="4">Insert Medicine</a></li>
               <li><a href="../Users/writepresc1.php"> <font size="4">Write Prescription</a></li>
               <li><a href="../Users/viewpastpresc1.php"> <font size="4">View Past Prescriptions</a></li>
               <li><a href="../Users/viewmypatients.php"><font size="4">My Patients List</font></a></li>
               </ul>
+              <li><a href="../Users/insertmedicine1.php"> <font size="4">Insert Medicine</a></li>
               </li>
               <li><a><font size="4">Blogs</font></a>
               <ul>

@@ -118,7 +118,7 @@ $pass=$row["doc_pass"];
       $res=$cnc->updatedetails($uid,$pass,$lic,$dname,$add,$gen1,$mob,$spec,$deg);
       if($res===true)
       {
-        header("Refresh:0");
+        header('location:docprofile.php');
       }
       else
       {
@@ -142,12 +142,12 @@ $pass=$row["doc_pass"];
                  &nbsp;&nbsp;&nbsp;&nbsp;</td>
                  </tr>
              </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <tr>            
                  <td><b><label class="sr-only" for="form-password">Password :-</label></td>
                  <td><input type="text" name="pass" size="100" value="<?php echo $pass; ?>" class="form-passwd form-control" ></td>
                  </tr>
-             </div>-->
+             </div>
             <div class="form-group">
                 <tr>            
                  <td><b><label class="sr-only" for="form-password">Email id :-</label></td>
