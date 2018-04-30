@@ -49,12 +49,12 @@ if (empty($_SESSION["id"])) {
             <form class="customform"  enctype="multipart/form-data" action="insertmedicine2.php" method="post">
             <div class="form-group">
                <tr><td><lable style="font-size: 20px;">Medicine Name</lable></td>
-               <td><input type="text" class="form-control" placeholder="Enter Medicine Name Here" name="medname" required>
+               <td><input type="text" class="form-control" pattern="[A-Za-z0-9]{4,30}" title="No Special Character" placeholder="Enter Medicine Name Here" name="medname" required>
                </td></tr>
                </div>
             <div class="form-group">
                <tr><td><lable style="font-size: 20px;">Company Name</lable></td>
-               <td><input type="text" class="form-control" placeholder="Enter Company Name Here" name="comname" required>
+               <td><input type="text" class="form-control"  pattern="[A-Za-z0-9]{4,30}" title="No Special Character" placeholder="Enter Company Name Here" name="comname" required>
                </td></tr>
                </div>
             <div class="form-group">

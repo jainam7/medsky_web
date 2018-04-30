@@ -43,6 +43,7 @@ include '../Shared/Assets/conditionforlogin.php';
             <text align="center"><h1>Write Prescription</h1></text>
   
 <!--</header>-->
+
 <table>
   <tr><td>Doctor Id:</td><td><?php echo $_SESSION["id"]; ?></td><td>Doctor Name:</td><td><?php echo $_SESSION["name"]; ?></td></tr>          
   <tr><td>Patient Id:</td><td><?php echo $_SESSION["pid"] ?></td><td>Patient Name:</td><td><?php echo $_SESSION["pname"]; ?></td></tr>
@@ -92,7 +93,7 @@ include '../Shared/Assets/conditionforlogin.php';
                                 $result=$cnn->selectallmedicine();
                                 echo '</select></td>'.
                                 '<td><textarea rows="3" placeholder="Notes" cols="35" name="instr'.$cnt.'"></textarea></td>'.
-                                '<td><input type="number" placeholder="Dosage for Morning" name="mor'.$cnt.'"></td>'.
+                                '<td><input type="number" pattern="[1-9]{2,3}" title="Positive Number Only" placeholder="Dosage for Morning" name="mor'.$cnt.'" required></td>'.
                                 '<td><input type="number" placeholder="Doasage for Afternoon" name="non'.$cnt.'"></td>'.
                                 '<td><input type="number" placeholder="Doage for Night" name="nig'.$cnt.'"></td>'.
                                 '<td><input type="number" placeholder="How Many Days?" name="day'.$cnt.'"></td>'.
@@ -100,7 +101,9 @@ include '../Shared/Assets/conditionforlogin.php';
                         '</div>'.
                         '</div>';
                     }
+                          
             ?>
+            
   
                    
 

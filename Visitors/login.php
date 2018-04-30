@@ -116,106 +116,20 @@ echo '<div class="btn btn-dark btn-lg btn-block">Enter Appropriate Username and 
 		
 	}
     ?>
-	  <script type="text/javascript">
-	   function validate_form() {
-	    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(document.sign.eid.value)) {
-                alert("You have entered an invalid email address!")
-                return (false)
-            }
-			var p=document.getElementById("passw").value;
-			if(p.length<6)
-			{
-				alert("Password must be at least 6 characters long.");
-				return (false);
-			}
-		
-		
-			var mnum=documnet.sign.mno.value;
-			
-			//var na = /^[a-zA-Z]+$/;
-			if((mnum.length < 1) || (mnum.length > 15))
-			{
-				alert(" Your Mobile Number must be 1 to 15 Integers.");
-				return (false);
-			}	
-			var right= /^[A-Za-z]+$/;
-	var a=document.getElementById("una").value;
-	if(!(a.match(right)))
-	{
-		alert("Username must have alphabet characters only");
-		return (false);
-	}
 	
-	   }
-	   function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode;
-            if (charCode != 46 && charCode > 31 &&
-                (charCode < 48 || charCode > 57)) {
-                alert("Enter Number");
-                return false;
-            }
-            return true;
-        }
-		/*function passvalid()
-		{
-			var p=document.getElementById("passw").value;
-			if(p.length<6)
-			{
-				alert("Password must be at least 6 characters long.");
-			}
-		
-
-		}*/
-		/*var na=documnet.sign.name.value;
-		function allLetter(na)
-	{
-	 var letters = /^[A-Za-z]+$/;
-    if(!(na.value.match(letters.value)))
-    {
-		alert('Username must have alphabet characters only');
-        //return true;
-    }
-}*/
-/*function uname()
-{
-	var right= /^[A-Za-z]+$/;
-	var a=document.getElementById("una").value;
-	if(!(a.match(right)))
-	{
-		alert("Username must have alphabet characters only");
-		return (false);
-	}
-	//else{
-	//	alert("Username must have alphabet characters only");
-	//}
-}*/
-/*function f(){
-var el=document.sign.name.value;
-var re=/^[a-z]+$/;
-if(!re.test(el.value))
- {
-	alert("Please enter char only");
-	//errors[errors.length] = "You valid Name .";
- }
-}*/
-
-		/*var inputtext=document.name.value;
-function inputAlphabet(inputtext, alertMsg){
-//var alphaExp = /^[a-zA-Z]+$/;
-var ck_name = /^[A-Za-z]+$/;
-var name = sign.name.value;
-if (!ck_name.test(name)) {
-  errors[errors.length] = "You valid Name .";
- }
-if(inputtext.value.match(alphaExp)){
-return true;
-}else{
-document.getElementById('p1').innerText = alertMsg;
-inputtext.focus();
-return false;
-}
-}*/
-
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+	
+	
+	
+	<script src="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	 
+	
 </script>
 </head>
 
@@ -352,7 +266,7 @@ else
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="pass" placeholder="Password..." class="form-password form-control" id="form-password" required>
+				                        	<input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" title="Password must be at least 6 to 10 characters long." class="form-password form-control" id="form-password" data-toggle="password" required>
 				                        </div>
 										<button type="submit" name="sub">Sign in!!</button> </br>  
 										<span class="pull-right"><a href="../doctor_mst/forgot.php">Forgot Password ??</a></span>
@@ -387,7 +301,7 @@ else
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" title="Password must be at least 6 to 10 characters long." class="form-passwd form-control"id="passw" required>
+				                        	<input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" title="Password must be at least 6 to 10 characters long." class="form-passwd form-control"id="passw" data-toggle="password" required>
 				                        </div>
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-doclic-no">Licence No</label>
@@ -396,7 +310,7 @@ else
 	
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-name">Name</label>
-				                        	<input type="text" name="name" placeholder="Name..." id="una" pattern="[a-zA-Z\s]+" class="form-control">
+				                        	<input type="text" name="name" placeholder="Name..." id="una" pattern="[a-zA-Z]{4,30}" title="Only Alphabets allowed" class="form-control">
 				                        </div>
 										<div class="form-group">
 										<center>
@@ -408,7 +322,7 @@ else
 										
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-mobile-no">Mobile No</label>
-				                        	<input type="number" name="mno" onkeypress="return isNumberKey(event)" placeholder="Mobile no..." pattern="/(7|8|9)\d{9}/" class="form-mno form-control" id="form-email">
+				                        	<input type="text" name="mno"  placeholder="Mobile no..." pattern="[789][0-9]{9}" title="Alphabets are not allowed.Starting with 7,8,9,only" class="form-mno form-control" id="form-email">
 				                        </div>
 									
 	

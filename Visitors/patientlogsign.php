@@ -51,12 +51,20 @@ if($result->num_rows===1)
 $name=$row["usr_name"];
 	$token=$row["usr_token"];
 	$flag=1;
+	$type="Admin";
 	if($row["usr_verify"]==$flag)
 	{
 	echo $row["user_verify"];
 	$_SESSION["pid"]=$id;
 	$_SESSION["pname"]=$row["usr_name"];
-	header('location: ../visitors/index.php');
+	if($row["usr_type"]==$type)
+	{
+		header('location:../../../medskyadmin/medadmin/web/index.php');
+	}
+	else
+	{
+		header('location: ../visitors/index.php');
+	}
 	
 	}
 	else
@@ -255,11 +263,11 @@ else
 				<form role="form" onsubmit="return validate_form();"action="patientlogsign.php" method="post" class="registration-form"name="psign">
 				    <div class="form-group">
 				        <label class="sr-only" for="form-email">Email id</label>
-				        <input type="text" name="id" placeholder="Email id" class="form-email form-control" required >
+				        <input type="text" name="id" placeholder="Email id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Enter Valid mail address Ex.abc@gmail.com" class="form-email form-control" required >
 				    </div>
 				    <div class="form-group">
 				        <label class="sr-only" for="form-password">Password</label>
-				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-passwd form-control" id="passw" data-toggle="password" required>
+				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" title="Password must be at least 6 to 10 characters long." class="form-passwd form-control" id="passw" data-toggle="password" required>
 				    </div>
                     <div class="form-group">
 				        <label class="sr-only" for="form-name">Name</label>

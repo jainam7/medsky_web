@@ -5,7 +5,9 @@ class pre
     private static $conn=null;
     public static function connect()
     {
-        self::$conn=mysqli_connect("sql12.freemysqlhosting.net","sql12228778","dSUWZ6DakP","sql12228778");
+        //self::$conn=mysqli_connect("sql12.freemysqlhosting.net","sql12228778","dSUWZ6DakP","sql12228778");
+        //self::$conn=mysqli_connect("localhost","root","","medsky");
+        self::$conn=mysqli_connect('sql12.freemysqlhosting.net','sql12235011','CWflEeDvDX','sql12235011');
         return self::$conn;
     }
     public static function disconnect()
