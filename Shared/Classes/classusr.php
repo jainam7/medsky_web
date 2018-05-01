@@ -25,10 +25,10 @@ class usr_all
         return $result;
         usr_all::disconnect();
     }
-     public function loginselect($id,$pass)
+     public function loginselect($id)
     {
         $cnn=usr_all::connect();
-        $q='select * from user_mst where pk_usr_email_id="'. $id .'"'.' and usr_pass="'. $pass .'"';
+        $q='select * from user_mst where pk_usr_email_id="'. $id .'"';
         $result=$cnn->query($q);
         return $result;
         usr_all::disconnect();

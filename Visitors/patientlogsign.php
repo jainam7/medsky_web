@@ -38,7 +38,7 @@ if(isset($_POST["tab"]))
 	
 	require '../Shared/Classes/classusr.php';
 $cnn=new usr_all;
-$result=$cnn->loginselect($uid,$pass);
+$result=$cnn->loginselect($uid);
 
 if($result->num_rows===1)
 {
@@ -239,11 +239,7 @@ else
 						<label class="sr-only" for="form-username">Email id</label>
 				        <input type="text" name="id" placeholder="Email id..." class="form-username form-control" id="form-username" required>
 				    </div>
-				    <div class="form-group">
-				        <label class="sr-only" for="form-password">Password</label>
-				        <input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" class="form-password form-control" id="form-password" data-toggle="password" required>
-					</div>
-						<button type="submit"name="tab">Sign in!!</button> </br>  
+				  		<button type="submit"name="tab">Sign in!!</button> </br>  
 						<span class="pull-right"><a href="../user_mst/forget.php">Forgot Password ??</a></span>
 				</form>
 			</div>
