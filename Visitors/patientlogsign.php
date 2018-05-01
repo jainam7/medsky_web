@@ -59,7 +59,7 @@ $name=$row["usr_name"];
 	$_SESSION["pname"]=$row["usr_name"];
 	if($row["usr_type"]==$type)
 	{
-		header('location:../../../medskyadmin/medadmin/web/index.php');
+		header('location: ../visitors/index.php');
 	}
 	else
 	{
